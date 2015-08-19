@@ -8,6 +8,20 @@ reload(sys)
 
 sys.setdefaultencoding('UTF-8')
 
+
+def fetch_data(name):
+    app_request = AppRequest(name)
+    data = app_request.get_company_info()
+    if data is None:
+        with open('failed.txt', 'a') as failed:
+            failed.write(name+'\n')
+    else:
+        with open('companies.txt', 'a') as fs:
+            fs.write(data+'\n')
+
+    return None
+
+
 if __name__ == '__main__':
     appRequest = AppRequest('东莞辣妈萌宝')
 
