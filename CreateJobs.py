@@ -11,5 +11,5 @@ q = Queue(connection=redis_conn, async=True)  # 设置async为False则入队后�
 
 with open("job.txt", 'r') as f:
     for line in f.readlines():
-        job = q.enqueue(fetch_data, line)
+        job = q.enqueue(fetch_data, line.strip())
         print job.id
