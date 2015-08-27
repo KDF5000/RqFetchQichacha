@@ -14,9 +14,11 @@ def fetch_data(name):
     data = app_request.get_company_info()
     # print data
     if data is None:
+        print ">>> Failed to fetch info!!!"
         with open('failed.txt', 'a') as failed:
             failed.write(name+'\n')
     else:
+        print ">>>>>> Successfully!!!!!!!!!!!!"
         with open('companies.txt', 'a') as fs:
             fs.write(json.dumps(data)+'\n')
 
